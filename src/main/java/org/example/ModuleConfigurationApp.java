@@ -14,7 +14,7 @@ public class ModuleConfigurationApp {
     @Bean
     public CorsWebFilter corsWebFilter() {
         CorsConfiguration corsConfig = new CorsConfiguration();
-        corsConfig.setAllowedOrigins(Arrays.asList("http://localhost:8080"));
+        corsConfig.setAllowedOrigins(Arrays.asList("http://localhost:8080","https://theultimatescrapper-pwxsr6cse-gourangvit.vercel.app/"));
         corsConfig.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         corsConfig.setMaxAge(3600L);
         corsConfig.addAllowedHeader("*");
