@@ -15,8 +15,8 @@ public class ModuleConfigurationApp {
     public CorsWebFilter corsWebFilter() {
         CorsConfiguration corsConfig = new CorsConfiguration();
 
-        corsConfig.setAllowedOrigins(Arrays.asList("*"));
-        corsConfig.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        corsConfig.setAllowedOrigins(Arrays.asList("http://localhost:8080","https://theultimatescrapper.vercel.app/","http://theultimatescrapper.vercel.app/"));
+        corsConfig.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
         corsConfig.setMaxAge(3600L);
         corsConfig.addAllowedHeader("*");
 
@@ -27,6 +27,6 @@ public class ModuleConfigurationApp {
     }
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        System.out.println("CORS module loaded");
     }
 }
