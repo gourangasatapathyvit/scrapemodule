@@ -7,22 +7,28 @@ import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 public class ModuleConfigurationApp {
+
+    private final List<String> allowedOrigins;
+
+    public ModuleConfigurationApp(List<String> allowedOrigins) {
+        this.allowedOrigins = allowedOrigins;
+    }
 
     @Bean
     public CorsWebFilter corsWebFilter() {
         CorsConfiguration corsConfig = new CorsConfiguration();
 
-        corsConfig.setAllowedOrigins(Arrays.asList("http://localhost:8080","https://theultimatescrapper.vercel.app/","http://theultimatescrapper.vercel.app/"));
+//        corsConfig.setAllowedOrigins(Arrays.asList("http://localhost:8080","https://theultimatescrapper.vercel.app/","http://theultimatescrapper.vercel.app/"));
+        corsConfig.setAllowedOrigins(allowedOrigins);
         corsConfig.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
         corsConfig.setMaxAge(3600L);
         corsConfig.addAllowedHeader("*");
-
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfig);
-
         return new CorsWebFilter(source);
     }
 
