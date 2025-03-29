@@ -3,8 +3,8 @@ package org.example;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.reactive.CorsWebFilter;
-import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +19,7 @@ public class ModuleConfigurationApp {
     }
 
     @Bean
-    public CorsWebFilter corsWebFilter() {
+    public CorsFilter corsWebFilter() {
         CorsConfiguration corsConfig = new CorsConfiguration();
 
 //        corsConfig.setAllowedOrigins(Arrays.asList("http://localhost:8080","https://theultimatescrapper.vercel.app/","http://theultimatescrapper.vercel.app/"));
@@ -29,7 +29,7 @@ public class ModuleConfigurationApp {
         corsConfig.addAllowedHeader("*");
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfig);
-        return new CorsWebFilter(source);
+        return new CorsFilter(source);
     }
 
     public static void main(String[] args) {
